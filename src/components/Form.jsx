@@ -13,9 +13,19 @@ export default function Form() {
       return { ...prevFormData, [name]: type === "checkbox" ? checked : value };
     });
   }
-  console.log(formData.joinNewsLetter);
+  function handleSubmit(event) {
+    event.preventDefault();
+    formData.password === ""
+      ? console.log("password can't be empty!")
+      : formData.password === formData.passwordConfirm
+      ? console.log("You are signed Successfully")
+      : console.log("passed do not match!");
+
+    formData.joinNewsLetter &&
+      console.log("Thanks for , joining our news letter!");
+  }
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <input
         type="text"
         className="form-item"
@@ -25,7 +35,7 @@ export default function Form() {
         value={formData.email}
       />
       <input
-        type="text"
+        type="password"
         className="form-item"
         placeholder="Password"
         onChange={handleChange}
@@ -33,7 +43,7 @@ export default function Form() {
         value={formData.password}
       />
       <input
-        type="text"
+        type="password"
         className="form-item"
         placeholder="Confirm Password"
         onChange={handleChange}
