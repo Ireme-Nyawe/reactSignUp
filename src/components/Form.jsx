@@ -18,11 +18,12 @@ export default function Form() {
     formData.password === ""
       ? console.log("password can't be empty!")
       : formData.password === formData.passwordConfirm
-      ? console.log("You are signed Successfully")
+      ? formData.joinNewsLetter == true
+        ? console.log(
+            "you are signed successfully, Thanks for joining our newsLetter "
+          ) && console.log("join")
+        : console.log("You are signed Successfully")
       : console.log("passed do not match!");
-
-    formData.joinNewsLetter &&
-      console.log("Thanks for , joining our news letter!");
   }
   return (
     <form className="form" onSubmit={handleSubmit}>
@@ -58,7 +59,7 @@ export default function Form() {
           id="joinNewsLetter"
           checked={formData.joinNewsLetter}
         />
-        <label htmlFor="joinNewsLetter">I want to join newsletter</label>
+        <label htmlFor="joinNewsLetter"> I want to join newsletter</label>
       </div>
       <div className="form-item div-button">
         <button>Sign Up</button>
